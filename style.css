@@ -6,7 +6,7 @@
     --text-color: #e0e0e0;
     --heading-color: #ffffff;
     --border-color: #333;
-    --gradient-start: rgba(42, 42, 42, 0.7); /* Darker gradient colors */
+    --gradient-start: rgba(42, 42, 42, 0.7); /* Using rgba here is fine */
     --gradient-mid: rgba(30, 30, 30, 0.8);
     --gradient-end: rgba(42, 42, 42, 0.7);
 }
@@ -18,7 +18,7 @@
     --text-color: #343a40;
     --heading-color: #212529;
     --border-color: #dee2e6;
-    --gradient-start: rgba(233, 236, 239, 0.7); /* Lighter gradient colors */
+    --gradient-start: rgba(233, 236, 239, 0.7); /* Using rgba here is fine */
     --gradient-mid: rgba(255, 255, 255, 0.8);
     --gradient-end: rgba(233, 236, 239, 0.7);
 }
@@ -492,13 +492,13 @@ header {
     padding: 1rem;
     background-color: var(--secondary-color);
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgb(0 0 0 / 0.2); /* Corrected */
     width: 120px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     animation: float 4s ease-in-out infinite;
 }
 [data-theme="light"] .skill-item {
-     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+     box-shadow: 0 4px 10px rgb(0 0 0 / 0.05); /* Corrected */
 }
 
 .skill-item:hover {
@@ -851,34 +851,34 @@ footer .fas.fa-heart {
     to { opacity: 1; transform: translateX(0); }
 }
 
-/* Float animation for skills */
+/* Float animation for skills - UPDATED SYNTAX */
 @keyframes float {
     0% {
         transform: translateY(0px);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        box-shadow: 0 4px 10px rgb(0 0 0 / 0.2);
     }
     50% {
         transform: translateY(-6px);
-        box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+        box-shadow: 0 10px 15px rgb(0 0 0 / 0.3);
     }
     100% {
         transform: translateY(0px);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        box-shadow: 0 4px 10px rgb(0 0 0 / 0.2);
     }
 }
 
 [data-theme="light"] @keyframes float {
     0% {
         transform: translateY(0px);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        box-shadow: 0 4px 10px rgb(0 0 0 / 0.05);
     }
     50% {
         transform: translateY(-6px);
-        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 15px rgb(0 0 0 / 0.1);
     }
     100% {
         transform: translateY(0px);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        box-shadow: 0 4px 10px rgb(0 0 0 / 0.05);
     }
 }
 
