@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Thank you for your message! I will get back to you shortly. (This is a demo)');
+            alert('Thank you for your message! I will get back to you shortly.');
             contactForm.reset();
         });
     }
