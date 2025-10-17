@@ -6,7 +6,7 @@
     --text-color: #e0e0e0;
     --heading-color: #ffffff;
     --border-color: #333;
-    --gradient-start: rgba(42, 42, 42, 0.7); /* Darker gradient for dark theme */
+    --gradient-start: rgba(42, 42, 42, 0.7); /* Darker gradient colors */
     --gradient-mid: rgba(30, 30, 30, 0.8);
     --gradient-end: rgba(42, 42, 42, 0.7);
 }
@@ -18,7 +18,7 @@
     --text-color: #343a40;
     --heading-color: #212529;
     --border-color: #dee2e6;
-    --gradient-start: rgba(233, 236, 239, 0.7); /* Lighter gradient for light theme */
+    --gradient-start: rgba(233, 236, 239, 0.7); /* Lighter gradient colors */
     --gradient-mid: rgba(255, 255, 255, 0.8);
     --gradient-end: rgba(233, 236, 239, 0.7);
 }
@@ -56,7 +56,7 @@ body {
     height: 100%;
     top: 0;
     left: 0;
-    z-index: -1; 
+    z-index: -1;
 }
 
 
@@ -276,14 +276,14 @@ header {
     animation: fadeInSlideRight 1s ease-out forwards;
     opacity: 0;
     text-align: left;
-    margin-left: 4rem; 
+    margin-left: 4rem;
 }
 
 .hero-image {
-    width: 300px; 
-    height: 300px; 
+    width: 300px;
+    height: 300px;
     background-color: var(--primary-color);
-    border-radius: 50%; 
+    border-radius: 50%;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
@@ -291,9 +291,9 @@ header {
     animation: fadeInSlideLeft 1s ease-out forwards;
     opacity: 0;
     transition: background-color 0.3s ease;
-    
+
     position: relative;
-    left: -140px; 
+    left: -140px;
 }
 
 [data-theme="light"] .hero-image {
@@ -301,9 +301,9 @@ header {
 }
 
 .hero-image img {
-    width: 95%; 
+    width: 95%;
     height: 95%;
-    object-fit: cover; 
+    object-fit: cover;
     border-radius: 50%;
     border: none;
     box-shadow: none;
@@ -418,38 +418,41 @@ header {
 
 /* --- Skills Section with Animated Background --- */
 .tech-skills-section {
-    background-color: var(--primary-color); /* Fallback background */
-    transition: background-color 0.3s ease;
-    position: relative; /* Needed to contain the ::before element */
-    overflow: hidden; /* Prevent gradient overflow */
-    z-index: 0; /* Ensure content is above background */
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
 }
 
-/* The animated gradient background */
 .tech-skills-section::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
     background: linear-gradient(
-        135deg, 
-        var(--gradient-start), 
-        var(--gradient-mid), 
+        135deg,
+        var(--gradient-start),
+        var(--gradient-mid),
         var(--gradient-end)
     );
-    background-size: 400% 400%; /* Make gradient larger than the container */
-    animation: gradientShift 15s ease infinite; /* Apply the animation */
-    z-index: -1; /* Place it behind the content */
-    opacity: 0.5; /* Make it subtle */
-    transition: background 0.3s ease; /* Smooth theme transition */
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    z-index: -1;
+    opacity: 0.6;
+    transition: background 0.3s ease;
 }
 
+.tech-skills-section .container {
+    position: relative;
+    z-index: 1;
+}
 
 .skills-category {
     margin-bottom: 3rem;
-    position: relative; /* Ensure category content is above background */
+    position: relative;
     z-index: 1;
 }
 
@@ -478,7 +481,7 @@ header {
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
-    position: relative; /* Ensure grid content is above background */
+    position: relative;
     z-index: 1;
 }
 
@@ -492,16 +495,16 @@ header {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     width: 120px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-    animation: float 4s ease-in-out infinite; /* Apply float animation */
+    animation: float 4s ease-in-out infinite;
 }
 [data-theme="light"] .skill-item {
      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .skill-item:hover {
-    transform: translateY(-5px); 
+    transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(255, 153, 0, 0.2);
-    animation-play-state: paused; /* Pause float animation on hover */
+    animation-play-state: paused;
 }
 
 .skill-item img {
@@ -629,7 +632,7 @@ header {
     box-shadow: 0 8px 25px rgba(0,0,0,0.3);
     transition: background-color 0.3s ease;
 }
-[data-theme="light"] .timeline, 
+[data-theme="light"] .timeline,
 [data-theme="light"] .certifications {
     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
@@ -879,7 +882,7 @@ footer .fas.fa-heart {
     }
 }
 
-/* NEW: Animation for gradient background shift */
+/* Animation for gradient background shift */
 @keyframes gradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -897,7 +900,7 @@ footer .fas.fa-heart {
     }
 
     .hero-content {
-        padding-right: 0; 
+        padding-right: 0;
         margin-left: 0; /* Reset margin for mobile */
         margin-bottom: 3rem;
         animation: none;
@@ -914,7 +917,7 @@ footer .fas.fa-heart {
         animation: none;
         opacity: 1;
         transform: none;
-        margin-bottom: 3rem; 
+        margin-bottom: 3rem;
         margin-left: 0;
         left: 0; /* Reset position for mobile */
         position: static; /* Reset position for mobile */
@@ -926,7 +929,7 @@ footer .fas.fa-heart {
     .hero-content .subtitle {
         font-size: 1.5rem;
     }
-    
+
     .about-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
@@ -1061,12 +1064,12 @@ footer .fas.fa-heart {
     .hero-buttons {
         flex-direction: column;
     }
-    
+
     .hero-image {
         width: 180px;
         height: 180px;
     }
-    
+
     .skill-item {
         width: 90px;
         padding: 0.6rem;
