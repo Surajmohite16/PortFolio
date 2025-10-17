@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-
     // --- Particles.js Initialization ---
     particlesJS('particles-js', {
         "particles": {
@@ -11,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             },
             "color": {
-                "value": "#757575" 
+                "value": "#757575"
             },
             "shape": {
                 "type": "circle",
@@ -46,11 +45,11 @@ document.addEventListener('DOMContentLoaded', () => {
             "events": {
                 "onhover": {
                     "enable": true,
-                    "mode": "grab" 
+                    "mode": "grab"
                 },
                 "onclick": {
                     "enable": true,
-                    "mode": "push" 
+                    "mode": "push"
                 },
                 "resize": true
             },
@@ -77,8 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "retina_detect": true
     });
 
-
-    // --- CORRECTED: Theme Switcher Logic ---
+    // --- Theme Switcher Logic ---
     const themeToggle = document.getElementById('theme-toggle');
     const sunIcon = 'fa-sun';
     const moonIcon = 'fa-moon';
@@ -87,8 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const setTheme = (theme) => {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
-        const iconElement = themeToggle.querySelector('i'); // Find the icon inside the button
-        // Update icon classes
+        const iconElement = themeToggle.querySelector('i');
         if (theme === 'dark') {
             iconElement.classList.remove(moonIcon);
             iconElement.classList.add(sunIcon);
@@ -106,13 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Check for saved theme in localStorage on page load
-    const savedTheme = localStorage.getItem('theme') || 'dark'; // Default to dark
+    const savedTheme = localStorage.getItem('theme') || 'dark';
     setTheme(savedTheme);
 
-
-    // --- EXISTING JAVASCRIPT ---
-
-    // Mobile menu toggle
+    // --- Mobile menu toggle ---
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
 
@@ -126,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navMenu.classList.remove('active');
     }));
 
-    // Intersection Observer for scroll animations
+    // --- Intersection Observer for scroll animations ---
     const sections = document.querySelectorAll('.content-section');
     
     const sectionObserver = new IntersectionObserver((entries, observer) => {
@@ -144,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sectionObserver.observe(section);
     });
 
-    // Active navigation link on scroll
+    // --- Active navigation link on scroll ---
     const navLinks = document.querySelectorAll('.nav-link');
     const allSections = document.querySelectorAll('section[id]');
 
@@ -152,7 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let current = '';
         allSections.forEach(section => {
             const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - 85) { // Adjusted offset for sticky header
+            if (window.pageYOffset >= sectionTop - 85) { // Adjusted offset for sticky header
                 current = section.getAttribute('id');
             }
         });
@@ -165,7 +159,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Contact form handler
+    // --- NEW: Stats Counter Animation ---
+    const statsSection = document.querySelector('.about-stats');
+
+    if (statsSection) {
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            const [entry] = entries; // Get the first entry
+
+            // If the element is intersecting and not yet animated
+            if (entry.isIntersecting && !statsSection.classList.contains('animated')) {
+                statsSection.classList.add('animated'); // Prevent re-animation
+
+                const counters = statsSection.querySelectorAll('h3[data-target]');
+                const animationDuration = 2000; // 2 seconds
+
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    let startTime = null;
+
+                    const updateCount = (timestamp) => {
+                        if (!startTime) startTime = timestamp;
+                        const progress = timestamp - startTime;
+                        
+                        const currentCount = Math.min(Math.floor(progress / animationDuration * target), target);
+                        
+                        counter.innerText = currentCount + '+';
+
+                        if (currentCount < target) {
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            counter.innerText = target + '+'; // Ensure it ends perfectly
+                        }
+                    };
+                    
+                    requestAnimationFrame(updateCount);
+                });
+
+                observer.unobserve(statsSection); // Stop observing after animation
+            }
+        }, {
+            threshold: 0.5 // Trigger when 50% of the element is in view
+        });
+
+        counterObserver.observe(statsSection);
+    }
+
+    // --- Contact form handler ---
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
