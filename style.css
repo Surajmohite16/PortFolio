@@ -730,7 +730,7 @@ header {
 
 .cert-badge-image {
     width: 100%;
-    max-width: 10px;
+    max-width: 100px;
     height: auto;
     margin-top: 1rem;
     border-radius: 8px;
