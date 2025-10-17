@@ -899,6 +899,49 @@ footer .fas.fa-heart {
     100% { background-position: 0% 50%; }
 }
 
+/* --- Social Sidebar --- */
+.social-sidebar {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 999; /* Below header (1000) but above content */
+    
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* Space between icons */
+    
+    padding: 0.8rem 0.5rem;
+    background-color: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    border-left: none; /* No border against the screen edge */
+    border-radius: 0 10px 10px 0; /* Rounded corners on the right */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    
+    transition: all 0.3s ease;
+}
+
+/* Adjust shadow for light theme */
+[data-theme="light"] .social-sidebar {
+     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.social-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    color: var(--accent-color); /* Use your site's accent color */
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
 
 /* Responsive Design */
 @media (max-width: 992px) {
@@ -1047,6 +1090,10 @@ footer .fas.fa-heart {
     }
     #contact-form {
         padding: 1.5rem;
+    }
+    
+    .social-sidebar {
+        display: none; /* Hide floating icons on mobile */
     }
 }
 
