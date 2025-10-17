@@ -703,18 +703,18 @@ header {
     margin-bottom: 0.5rem;
 }
 
+/* --- UPDATED CERTIFICATION STYLES --- */
 .certification-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-bottom: 2rem;
-    gap: 1.5rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    gap: 1rem;
 }
 
-.certification-item img {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-    flex-shrink: 0;
+.certification-item:last-child {
+    margin-bottom: 0;
 }
 
 .cert-details h4 {
@@ -726,6 +726,14 @@ header {
     font-size: 0.95rem;
     color: var(--text-color);
     margin: 0;
+}
+
+.cert-badge-image {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    margin-top: 1rem;
+    border-radius: 8px;
 }
 
 .cert-details a {
@@ -1031,13 +1039,7 @@ footer .fas.fa-heart {
     .timeline-item h4 {
         font-size: 1.2rem;
     }
-    .certification-item {
-        flex-direction: column;
-        text-align: center;
-    }
-    .certification-item img {
-        margin-bottom: 0.5rem;
-    }
+
     .contact-info {
         flex-direction: column;
         align-items: center;
