@@ -6,9 +6,10 @@
     --text-color: #e0e0e0;
     --heading-color: #ffffff;
     --border-color: #333;
-    --gradient-start: rgba(42, 42, 42, 0.7); /* Using rgba here is fine */
+    --gradient-start: rgba(42, 42, 42, 0.7);
     --gradient-mid: rgba(30, 30, 30, 0.8);
     --gradient-end: rgba(42, 42, 42, 0.7);
+    --icon-bg-color: rgba(255, 255, 255, 0.04); /* For animated icons */
 }
 
 [data-theme="light"] {
@@ -18,9 +19,10 @@
     --text-color: #343a40;
     --heading-color: #212529;
     --border-color: #dee2e6;
-    --gradient-start: rgba(233, 236, 239, 0.7); /* Using rgba here is fine */
+    --gradient-start: rgba(233, 236, 239, 0.7);
     --gradient-mid: rgba(255, 255, 255, 0.8);
     --gradient-end: rgba(233, 236, 239, 0.7);
+    --icon-bg-color: rgba(0, 0, 0, 0.03); /* For animated icons */
 }
 
 :root {
@@ -445,6 +447,34 @@ header {
     transition: background 0.3s ease;
 }
 
+/* This is the new animated obstacles layer */
+.tech-skills-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2; /* Place behind the gradient overlay */
+
+    /* Define multiple SVG icons as background images */
+    background-image:
+        /* Cloud Icon */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M41.5 21a10.5 10.5 0 0 0-20.4-3.5 12.5 12.5 0 0 0-1.6 25h23.5a12 12 0 0 0 9-20.4 10.4 10.4 0 0 0-10.5-1.1z' fill='var(--icon-bg-color)'/%3E%3C/svg%3E"),
+        /* Server Icon */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 2c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2H5zm0 8c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2H5zm0 8c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2H5z' fill='var(--icon-bg-color)'/%3E%3C/svg%3E"),
+        /* Gear Icon */
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z' fill='var(--icon-bg-color)'/%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;
+    /* Assign different sizes and starting positions for a parallax effect */
+    background-size: 100px, 150px, 80px;
+    background-position: 10% 110%, 80% 120%, 40% 130%;
+
+    /* Apply the animation */
+    animation: moveObstacles 60s linear infinite;
+}
+
 .tech-skills-section .container {
     position: relative;
     z-index: 1;
@@ -492,13 +522,13 @@ header {
     padding: 1rem;
     background-color: var(--secondary-color);
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgb(0 0 0 / 0.2); /* Corrected */
+    box-shadow: 0 4px 10px rgb(0 0 0 / 0.2);
     width: 120px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     animation: float 4s ease-in-out infinite;
 }
 [data-theme="light"] .skill-item {
-     box-shadow: 0 4px 10px rgb(0 0 0 / 0.05); /* Corrected */
+     box-shadow: 0 4px 10px rgb(0 0 0 / 0.05);
 }
 
 .skill-item:hover {
@@ -887,6 +917,16 @@ footer .fas.fa-heart {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}
+
+/* NEW Animation for moving background obstacles */
+@keyframes moveObstacles {
+    from {
+        background-position: 10% 110%, 80% 120%, 40% 130%;
+    }
+    to {
+        background-position: 20% -10%, 70% -20%, 50% -30%;
+    }
 }
 
 
