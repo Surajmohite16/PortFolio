@@ -270,7 +270,7 @@ header {
     animation: fadeInSlideRight 1s ease-out forwards;
     opacity: 0;
     text-align: left;
-    margin-left: 4rem; /* <-- ADD THIS LINE to push the text to the right */
+    margin-left: 4rem; 
 }
 
 .hero-image {
@@ -286,7 +286,6 @@ header {
     opacity: 0;
     transition: background-color 0.3s ease;
     
-    /* THE FIX: Use position to move the element */
     position: relative;
     left: -140px; 
 }
@@ -458,14 +457,16 @@ header {
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     width: 120px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    animation: float 4s ease-in-out infinite; /* Apply animation */
 }
 [data-theme="light"] .skill-item {
      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .skill-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px); 
     box-shadow: 0 8px 20px rgba(255, 153, 0, 0.2);
+    animation-play-state: paused; /* Pause animation on hover */
 }
 
 .skill-item img {
@@ -812,6 +813,37 @@ footer .fas.fa-heart {
     to { opacity: 1; transform: translateX(0); }
 }
 
+/* Float animation for skills */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    50% {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+    }
+    100% {
+        transform: translateY(0px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+}
+
+[data-theme="light"] @keyframes float {
+    0% {
+        transform: translateY(0px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    50% {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    }
+    100% {
+        transform: translateY(0px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+}
+
 
 /* Responsive Design */
 @media (max-width: 992px) {
@@ -824,7 +856,7 @@ footer .fas.fa-heart {
 
     .hero-content {
         padding-right: 0; 
-        margin-left: 0; /* Reset margin for mobile */
+        margin-left: 0; 
         margin-bottom: 3rem;
         animation: none;
         opacity: 1;
@@ -842,8 +874,8 @@ footer .fas.fa-heart {
         transform: none;
         margin-bottom: 3rem; 
         margin-left: 0;
-        left: 0; /* Reset position for mobile */
-        position: static; /* Reset position for mobile */
+        left: 0; 
+        position: static; 
     }
 
     .hero-content h1 {
