@@ -126,12 +126,14 @@ header {
     gap: 1.5rem;
 }
 
+/* UPDATED LOGO STYLE */
 .nav-logo {
-    font-size: 2rem;
-    font-weight: 700;
+    font-family: 'Allura', cursive;
+    font-size: 2.8rem;
+    font-weight: 400; /* Cursive fonts look better without bold */
     color: var(--accent-color);
     text-decoration: none;
-    letter-spacing: -1px;
+    letter-spacing: normal; /* Reset letter-spacing for cursive */
 }
 
 .nav-menu {
