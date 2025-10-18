@@ -915,8 +915,8 @@ footer .fas.fa-heart {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px; /* Made circle smaller */
-    height: 40px; /* Made circle smaller */
+    width: 20px; /* Made circle smaller */
+    height: 20px; /* Made circle smaller */
     font-size: 1.1rem; /* Made icon smaller */
     color: var(--text-color);
     
