@@ -903,7 +903,7 @@ footer .fas.fa-heart {
 .social-sidebar {
     position: fixed;
     top: 60%;
-    left: 0.5rem; /* Moved further from the edge */
+    left: 1rem; /* Moved further from the edge */
     transform: translateY(-50%);
     z-index: 999; 
     
